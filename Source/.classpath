@@ -7,7 +7,7 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/vuman/Desktop/sqljdbc_7.2.0.0_enu/sqljdbc_7.2/enu/mssql-jdbc-7.2.0.jre11.jar">
+	<classpathentry kind="lib" path="E:/CN_web/Template/sqljdbc_7.2.0.0_enu/sqljdbc_7.2/enu/mssql-jdbc-7.2.0.jre11.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>

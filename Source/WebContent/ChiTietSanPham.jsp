@@ -33,7 +33,7 @@
 	<%
 		DecimalFormat formatter = new DecimalFormat("###,###,###");	
 	
-		String id =String.valueOf(request.getAttribute("IdSP"));
+		int id =Integer.parseInt((String)request.getAttribute("IdSP"));
 		
 		SanPhamDAO dao = new SanPhamDAO();
 		SanPhamViewModel model = dao.ChiTietSanPham(id);
@@ -119,18 +119,20 @@
 								</label>
 							</div>
 
+						<form action="/MobileWorldClient/ThemGioHang" method="post">
+						<input name = "Id" style="display: none" value="<%=model.getId()%>">
 							<div class="add-to-cart">
 								<div class="qty-label">
-									Giá
+									Số Lượng
 									<div class="input-number">
-										<input type="number">
+										<input name="SoLuong" type="number" value="1">
 										<span class="qty-up">+</span>
 										<span class="qty-down">-</span>
 									</div>
 								</div>
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Thêm Vào Giỏ</button>
+								<button class="add-to-cart-btn" type="submit"><i class="fa fa-shopping-cart"></i> Thêm Vào Giỏ</button>
 							</div>
-
+						</form>
 							<ul class="product-btns">
 								<li><a href="#"><i class="fa fa-heart-o"></i> Yêu Thích</a></li>
 								<li><a href="#"><i class="fa fa-exchange"></i> So Sánh</a></li>

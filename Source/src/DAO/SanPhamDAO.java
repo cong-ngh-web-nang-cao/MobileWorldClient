@@ -120,7 +120,7 @@ public class SanPhamDAO {
 		return list;
 	}
 	
-	public SanPhamViewModel ChiTietSanPham(String Id)
+	public SanPhamViewModel ChiTietSanPham(int Id)
 	{
 		ResultSet rs = null;
 		String sql = "{call SP_ChiTietSanPham(?)}";
@@ -129,7 +129,7 @@ public class SanPhamDAO {
 		
 		try {
 			CallableStatement cs = con.prepareCall(sql);
-			cs.setString(1, Id);
+			cs.setInt(1, Id);
 			
 			rs = cs.executeQuery();
 			
@@ -152,6 +152,61 @@ public class SanPhamDAO {
 		}
 		
 		return model;
+	}
+	
+	// Lấy sản phẩm theo loại, điện thoại hoặc tablet hoặc máy tính bảng  (hàm này sẽ trả về một danh sách gồm các sản phẩm theo danh mục truyền vào
+	public ArrayList<SanPhamViewModel> LaySanPhamTheoLoai(String DanhMuc, int Start, int End) {
+		ArrayList<SanPhamViewModel> list = new ArrayList<SanPhamViewModel>();
+				
+		String sql = "{call SP_LaySanPhamTheoLoai(?,?,?)}";
+		
+		CallableStatement cs;
+		try {
+			cs = con.prepareCall(sql);
+			cs.setString(1, DanhMuc);
+			cs.setInt(2, Start);
+			cs.setInt(3, End);
+			
+			ResultSet rs = cs.executeQuery();
+			while(rs.next()) {
+				SanPhamViewModel model = new SanPhamViewModel();
+				
+				model.setId(rs.getInt("Id"));
+				model.setTenSP(rs.getString("TenSP"));
+				model.setGia(rs.getInt("Gia"));
+				
+				list.add(model);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
+	public int SoLuongSanPhamTheoLoai(String DanhMuc) {			
+		String sql = "{call SP_SoLuongSanPhamTheoLoai(?)}";
+		
+		int SoLuong = 0;
+		
+		CallableStatement cs;
+		try {
+			cs = con.prepareCall(sql);
+			cs.setString(1, DanhMuc);
+			
+			ResultSet rs = cs.executeQuery();
+			while(rs.next()) {
+				SoLuong = rs.getInt("SoLuong");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return SoLuong;
 	}
 	
 	public String Lay1AnhSanPham(int Id) {
@@ -179,7 +234,7 @@ public class SanPhamDAO {
 	}
 	
 	
-	public List<String> LayAnhSanPham(String Id) {
+	public List<String> LayAnhSanPham(int Id) {
 		String sql = "{call SP_LayAnhSanPham(?)}";
 		
 		ArrayList<String> list = new ArrayList<String>();
@@ -187,7 +242,7 @@ public class SanPhamDAO {
 		CallableStatement cs;
 		try {
 			cs = con.prepareCall(sql);
-			cs.setString(1, Id);
+			cs.setInt(1, Id);
 			
 			ResultSet rs = cs.executeQuery();
 			

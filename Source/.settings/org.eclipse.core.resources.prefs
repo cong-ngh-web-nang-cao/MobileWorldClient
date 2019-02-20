@@ -1,3 +1,6 @@
 eclipse.preferences.version=1
 encoding//WebContent/Index.jsp=UTF-8
-encoding//src/Controller/Test.java=UTF-8
+encoding//src/Controller/CapNhatSoLuong.java=UTF-8
+encoding//src/Controller/ThemGioHang.java=UTF-8
+encoding//src/Controller/XoaGioHang.java=UTF-8
+encoding//src/DAO/SanPhamDAO.java=UTF-8

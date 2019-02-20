@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="DAO.SanPhamDAO"%>
 <%@page import="Models.SanPhamViewModel"%>
@@ -25,11 +26,12 @@
 						</div>
 					</div>
 					<!-- /section title -->
-
+					
 					<!-- Products tab & slick -->
 					<div class="col-md-12">
 						<div class="row">
 							<div class="products-tabs">
+								
 								<!-- tab -->
 								<div id="tab1" class="tab-pane active">
 									<div class="products-slick" data-nav="#slick-nav-1">
@@ -49,6 +51,10 @@
 									
 										<!-- product -->
 										<div class="product">
+										<form action="/MobileWorldClient/ThemGioHang" method="post">
+											<input name = "Id" style="display: none" value="<%=model.getId()%>">
+											<input name = "SoLuong" style="display: none" value="1">
+
 											<div class="product-img">
 												
 												<img src="./img/products/<%=anhsp %>" alt="anhsanpham">
@@ -75,15 +81,19 @@
 												</div>
 											</div>
 											<div class="add-to-cart">
-												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Thêm Vào Giỏ</button>
+												<button class="add-to-cart-btn" type="submit"><i class="fa fa-shopping-cart"></i>Thêm Vào Giỏ</button>
 											</div>
+											</form>
 										</div>
+										
 										<!-- /product -->
 										<% } %>
+										
 									</div>
 									<div id="slick-nav-1" class="products-slick-nav"></div>
 								</div>
 								<!-- /tab -->
+								
 							</div>
 						</div>
 					</div>

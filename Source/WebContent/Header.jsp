@@ -1,3 +1,7 @@
+<%@page import="DAO.SanPhamDAO"%>
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="Models.GioHangModel"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -71,44 +75,71 @@
 
 								<!-- Cart -->
 								<div class="dropdown">
+									<%
+										SanPhamDAO dao = new SanPhamDAO();
+										DecimalFormat formatter = new DecimalFormat("###,###,###");
+							        	HttpSession ses = request.getSession();
+							        	List<GioHangModel> Cart = (List<GioHangModel>)ses.getAttribute("Cart");
+							        	
+							        	
+						        	
+							        	int TongTien = 0;
+							        	int SoSanPham = 0;
+							        	if(Cart != null){
+							        		for(GioHangModel model : Cart){
+								        		SoSanPham = SoSanPham + model.getSoLuong();
+								        		TongTien = TongTien + model.getTongTien();
+								        	}
+							        	}
+							        %>
 									<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
 										<i class="fa fa-shopping-cart"></i>
 										<span>Giỏ Hàng</span>
-										<div class="qty">3</div>
+										<div class="qty"><%=SoSanPham%></div>
 									</a>
 									<div class="cart-dropdown">
+									<% 
+										if(Cart != null && Cart.size() >0){
+									%>
 										<div class="cart-list">
+										<%
+											for(GioHangModel model : Cart){
+												String anhsp = dao.Lay1AnhSanPham(model.getSanPham().getId());
+										%>
 											<div class="product-widget">
 												<div class="product-img">
-													<img src="./img/product01.png" alt="">
+													<img src="./img/products/<%=anhsp %>" alt="">
 												</div>
 												<div class="product-body">
-													<h3 class="product-name"><a href="#">product name goes here</a></h3>
-													<h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
+													<h3 class="product-name"><a href="#"><%=model.getSanPham().getTenSP() %></a></h3>
+													<h4 class="product-price"><span class="qty"><%=model.getSoLuong() %>x</span><%=formatter.format(model.getSanPham().getGia())%> đ</h4>
 												</div>
-												<button class="delete"><i class="fa fa-close"></i></button>
+												<a class="delete" href="/MobileWorldClient/XoaGioHang?id=<%=model.getSanPham().getId()%>"><i class="fa fa-close"></i></a>
 											</div>
-
-											<div class="product-widget">
-												<div class="product-img">
-													<img src="./img/product02.png" alt="">
-												</div>
-												<div class="product-body">
-													<h3 class="product-name"><a href="#">product name goes here</a></h3>
-													<h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
-												</div>
-												<button class="delete"><i class="fa fa-close"></i></button>
-											</div>
+										<%
+											}
+										%>
 										</div>
 										<div class="cart-summary">
-											<small>3 Item(s) selected</small>
-											<h5>SUBTOTAL: $2940.00</h5>
+											<p><%=SoSanPham %> sản phẩm</p>
+											<h5>Tổng Tiền: <%=formatter.format(TongTien) %> VNĐ</h5>
 										</div>
 										<div class="cart-btns">
-											<a href="#">View Cart</a>
-											<a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+											<a href="GioHang.jsp">Chi Tiết</a>
+											<a href="#">Đặt Hàng  <i class="fa fa-arrow-circle-right"></i></a>
 										</div>
+										
+										<%
+							        		}
+							        		else
+							        		{
+										%>
+										<h5>Giỏ Hàng Trống</h5>
+										<%
+											}
+							        	%>
 									</div>
+									
 								</div>
 								<!-- /Cart -->
 
@@ -139,11 +170,12 @@
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
 						<li><a href="#">Trang Chủ</a></li>
-						<li><a href="#">Điện Thoại</a></li>
+						<li><a href="DienThoai.jsp?pageIndex=1">Điện Thoại</a></li>
 						<li><a href="#">Máy Tính Bảng</a></li>
 						<li><a href="#">Khuyến Mại</a></li>
 						<li><a href="#">Bảo Hành</a></li>
 						<li><a href="#">Thông Tin - Liên Hệ</a></li>
+						<li><a href="GioHang.jsp">Giỏ Hàng</a></li>
 					</ul>
 					<!-- /NAV -->
 				</div>

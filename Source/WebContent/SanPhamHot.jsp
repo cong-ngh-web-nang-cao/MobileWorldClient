@@ -44,10 +44,13 @@
 											
 											String anhsp = dao.Lay1AnhSanPham(model.getId());
 										
-									%>
-									
+									%>									
 										<!-- product -->
 										<div class="product">
+										<form action="/MobileWorldClient/ThemGioHang" method="post">
+											<input name = "Id" style="display: none" value="<%=model.getId()%>">
+											<input name = "SoLuong" style="display: none" value="1">
+										
 											<div class="product-img">
 												<img src="./img/products/<%=anhsp %>" alt="">
 												<div class="product-label">
@@ -73,8 +76,9 @@
 												</div>
 											</div>
 											<div class="add-to-cart">
-												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Thêm Vào Giỏ</button>
+												<button class="add-to-cart-btn" type="submit"><i class="fa fa-shopping-cart"></i> Thêm Vào Giỏ</button>
 											</div>
+										</form>
 										</div>
 										<!-- /product -->
 										<%
