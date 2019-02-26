@@ -31,6 +31,7 @@
 <!-- Custom stlylesheet -->
 <link type="text/css" rel="stylesheet" href="css/style.css"/>
 
+<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.css"/>
 </head>
 <body>
 	<jsp:include page="Header.jsp"></jsp:include>
@@ -84,6 +85,9 @@
 							<!-- product -->
 							<div class="col-md-4 col-xs-6">
 								<div class="product">
+								
+								<input name = "Id" style="display: none" value="<%=sp.getId()%>">
+								<input name = "SoLuong" id="txtSoLuong" style="display: none" value="1">
 									<div class="product-img">
 										<img src="./img/products/<%=anh %>" alt="">
 										<div class="product-label">
@@ -108,8 +112,9 @@
 										</div>
 									</div>
 									<div class="add-to-cart">
-										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+											<button id="btnAddtoCart" class="add-to-cart-btn" data-id="<%=sp.getId()%>"><i class="fa fa-shopping-cart"></i>Thêm Vào Giỏ</button>
 									</div>
+								
 								</div>
 							</div>
 							<!-- /product -->

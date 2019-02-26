@@ -79,14 +79,13 @@
                 		DecimalFormat formatter = new DecimalFormat("###,###,###");
                 		SanPhamDAO dao = new SanPhamDAO();
                 		
-                	
                 		int ThanhTien = 0;
                 		int TongSoLuong = 0;
                 		if(ses.getAttribute("Cart") != null){
                 			List<GioHangModel> Cart = (List<GioHangModel>)ses.getAttribute("Cart");
 
                 			for(GioHangModel model : Cart){
-                				String anhsp = dao.Lay1AnhSanPham(model.getSanPham().getId());
+                				
                 				ThanhTien = ThanhTien + model.getTongTien();
                 				TongSoLuong = TongSoLuong + model.getSoLuong();
                 	%>
@@ -95,11 +94,10 @@
                         <td data-th="Product">
                             <div class="row">
                                 <div class="col-sm-2 hidden-xs">
-                                    <img src="./img/products/<%=anhsp %>" alt="Sản phẩm 1" class="img-responsive" width="100">
+                                    <img src="./img/products/<%=model.getAnh() %>" alt="Sản phẩm 1" class="img-responsive" width="100">
                                 </div>
                                 <div class="col-sm-10">
                                 	<a href="/MobileWorldClient/ChiTietSanPham?id=<%=model.getSanPham().getId()%>"><h4 class="nomargin"><%=model.getSanPham().getTenSP() %></h4></a>
-                                    
                                     <p><%=model.getSanPham().getDanhMuc() %></p>
                                 </div>
                             </div>

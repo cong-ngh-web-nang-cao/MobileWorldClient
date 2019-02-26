@@ -27,6 +27,8 @@
 
 <!-- Custom stlylesheet -->
 <link type="text/css" rel="stylesheet" href="css/style.css"/>
+
+<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.css"/>
 </head>
 <body>
 	<jsp:include page="Header.jsp"></jsp:include>
@@ -119,20 +121,20 @@
 								</label>
 							</div>
 
-						<form action="/MobileWorldClient/ThemGioHang" method="post">
+						<!--<form action="/MobileWorldClient/ThemGioHang" method="post">  -->
 						<input name = "Id" style="display: none" value="<%=model.getId()%>">
 							<div class="add-to-cart">
 								<div class="qty-label">
 									Số Lượng
 									<div class="input-number">
-										<input name="SoLuong" type="number" value="1">
+										<input id="txtSoLuong" name="SoLuong" type="number" value="1">
 										<span class="qty-up">+</span>
 										<span class="qty-down">-</span>
 									</div>
 								</div>
-								<button class="add-to-cart-btn" type="submit"><i class="fa fa-shopping-cart"></i> Thêm Vào Giỏ</button>
+								<button class="add-to-cart-btn" data-id="<%=model.getId()%>"><i class="fa fa-shopping-cart"></i> Thêm Vào Giỏ</button>
 							</div>
-						</form>
+						
 							<ul class="product-btns">
 								<li><a href="#"><i class="fa fa-heart-o"></i> Yêu Thích</a></li>
 								<li><a href="#"><i class="fa fa-exchange"></i> So Sánh</a></li>

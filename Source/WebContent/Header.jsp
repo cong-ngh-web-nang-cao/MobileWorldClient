@@ -22,7 +22,8 @@
 					</ul>
 					<ul class="header-links pull-right">
 						<li><a href="#"><i class="fa fa-dollar"></i> VND</a></li>
-						<li><a href="#"><i class="fa fa-user-o"></i> Vũ Mạnh Tuấn</a></li>
+						<li id = "tennguoidung"></li>
+						<li id = "btnDangXuat"></li>
 					</ul>
 				</div>
 			</div>
@@ -75,69 +76,14 @@
 
 								<!-- Cart -->
 								<div class="dropdown">
-									<%
-										SanPhamDAO dao = new SanPhamDAO();
-										DecimalFormat formatter = new DecimalFormat("###,###,###");
-							        	HttpSession ses = request.getSession();
-							        	List<GioHangModel> Cart = (List<GioHangModel>)ses.getAttribute("Cart");
-							        	
-							        	
-						        	
-							        	int TongTien = 0;
-							        	int SoSanPham = 0;
-							        	if(Cart != null){
-							        		for(GioHangModel model : Cart){
-								        		SoSanPham = SoSanPham + model.getSoLuong();
-								        		TongTien = TongTien + model.getTongTien();
-								        	}
-							        	}
-							        %>
+									
 									<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
 										<i class="fa fa-shopping-cart"></i>
 										<span>Giỏ Hàng</span>
-										<div class="qty"><%=SoSanPham%></div>
+										<div id="sosanpham" class="qty"></div>
 									</a>
-									<div class="cart-dropdown">
-									<% 
-										if(Cart != null && Cart.size() >0){
-									%>
-										<div class="cart-list">
-										<%
-											for(GioHangModel model : Cart){
-												String anhsp = dao.Lay1AnhSanPham(model.getSanPham().getId());
-										%>
-											<div class="product-widget">
-												<div class="product-img">
-													<img src="./img/products/<%=anhsp %>" alt="">
-												</div>
-												<div class="product-body">
-													<h3 class="product-name"><a href="#"><%=model.getSanPham().getTenSP() %></a></h3>
-													<h4 class="product-price"><span class="qty"><%=model.getSoLuong() %>x</span><%=formatter.format(model.getSanPham().getGia())%> đ</h4>
-												</div>
-												<a class="delete" href="/MobileWorldClient/XoaGioHang?id=<%=model.getSanPham().getId()%>"><i class="fa fa-close"></i></a>
-											</div>
-										<%
-											}
-										%>
-										</div>
-										<div class="cart-summary">
-											<p><%=SoSanPham %> sản phẩm</p>
-											<h5>Tổng Tiền: <%=formatter.format(TongTien) %> VNĐ</h5>
-										</div>
-										<div class="cart-btns">
-											<a href="GioHang.jsp">Chi Tiết</a>
-											<a href="#">Đặt Hàng  <i class="fa fa-arrow-circle-right"></i></a>
-										</div>
+									<div id="cartInfo" class="cart-dropdown">
 										
-										<%
-							        		}
-							        		else
-							        		{
-										%>
-										<h5>Giỏ Hàng Trống</h5>
-										<%
-											}
-							        	%>
 									</div>
 									
 								</div>
@@ -169,13 +115,22 @@
 				<div id="responsive-nav">
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
-						<li><a href="#">Trang Chủ</a></li>
+						<li><a class="btnTrangChu" href="#">Trang Chủ</a></li>
 						<li><a href="DienThoai.jsp?pageIndex=1">Điện Thoại</a></li>
 						<li><a href="#">Máy Tính Bảng</a></li>
 						<li><a href="#">Khuyến Mại</a></li>
 						<li><a href="#">Bảo Hành</a></li>
 						<li><a href="#">Thông Tin - Liên Hệ</a></li>
-						<li><a href="GioHang.jsp">Giỏ Hàng</a></li>
+						
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tài Khoản <b class="caret"></b></a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="DangNhap.jsp">Đăng Nhập</a></li>
+								<li><a href="#">Tạo Tài Khoản</a></li>
+							</ul>
+							
+							
+						</li>
 					</ul>
 					<!-- /NAV -->
 				</div>

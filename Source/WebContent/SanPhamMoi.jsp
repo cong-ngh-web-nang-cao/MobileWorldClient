@@ -31,7 +31,7 @@
 					<div class="col-md-12">
 						<div class="row">
 							<div class="products-tabs">
-								
+								<input name = "SoLuong" id="txtSoLuong" style="display: none" value="1">
 								<!-- tab -->
 								<div id="tab1" class="tab-pane active">
 									<div class="products-slick" data-nav="#slick-nav-1">
@@ -51,10 +51,8 @@
 									
 										<!-- product -->
 										<div class="product">
-										<form action="/MobileWorldClient/ThemGioHang" method="post">
-											<input name = "Id" style="display: none" value="<%=model.getId()%>">
-											<input name = "SoLuong" style="display: none" value="1">
-
+										<!--<form action="/MobileWorldClient/ThemGioHang" method="post">  -->
+											
 											<div class="product-img">
 												
 												<img src="./img/products/<%=anhsp %>" alt="anhsanpham">
@@ -81,9 +79,9 @@
 												</div>
 											</div>
 											<div class="add-to-cart">
-												<button class="add-to-cart-btn" type="submit"><i class="fa fa-shopping-cart"></i>Thêm Vào Giỏ</button>
+												<button id="btnAddtoCart" class="add-to-cart-btn" data-id="<%=model.getId()%>"><i class="fa fa-shopping-cart"></i>Thêm Vào Giỏ</button>
 											</div>
-											</form>
+											<!-- </form> -->
 										</div>
 										
 										<!-- /product -->
@@ -144,3 +142,5 @@
 			<!-- /container -->
 		</div>
 		<!-- /HOT DEAL SECTION -->
+		
+		

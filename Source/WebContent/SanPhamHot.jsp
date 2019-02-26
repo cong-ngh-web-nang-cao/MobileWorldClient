@@ -47,9 +47,8 @@
 									%>									
 										<!-- product -->
 										<div class="product">
-										<form action="/MobileWorldClient/ThemGioHang" method="post">
-											<input name = "Id" style="display: none" value="<%=model.getId()%>">
-											<input name = "SoLuong" style="display: none" value="1">
+										
+											<input name = "SoLuong" id="txtSoLuong" style="display: none" value="1">
 										
 											<div class="product-img">
 												<img src="./img/products/<%=anhsp %>" alt="">
@@ -76,9 +75,9 @@
 												</div>
 											</div>
 											<div class="add-to-cart">
-												<button class="add-to-cart-btn" type="submit"><i class="fa fa-shopping-cart"></i> Thêm Vào Giỏ</button>
+												<button id="btnAddtoCart" class="add-to-cart-btn" data-id="<%=model.getId()%>"><i class="fa fa-shopping-cart"></i>Thêm Vào Giỏ</button>
 											</div>
-										</form>
+										
 										</div>
 										<!-- /product -->
 										<%

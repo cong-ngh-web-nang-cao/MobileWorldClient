@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -10,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.google.gson.Gson;
 
 import DAO.SanPhamDAO;
 import Models.GioHangModel;
@@ -37,7 +40,6 @@ public class ThemGioHang extends HttpServlet {
 		RequestDispatcher dis = request.getRequestDispatcher("Index.jsp");
 		dis.forward(request, response);
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -45,13 +47,16 @@ public class ThemGioHang extends HttpServlet {
 		SanPhamDAO dao = new SanPhamDAO();
 		HttpSession ses = request.getSession();
 		
-		int Id = Integer.parseInt((String)request.getParameter("Id"));		
+		int Id = Integer.parseInt((String)request.getParameter("idsp"));		
 		SanPhamViewModel SanPham = dao.ChiTietSanPham(Id); //Lấy sản phẩm từ id
 		
-		int SoLuong = Integer.parseInt((String)request.getParameter("SoLuong")); //Lấy số lượng sản phẩm cần thêm vào giỏ
+		String Anh = dao.Lay1AnhSanPham(Id);
+		
+		int SoLuong = Integer.parseInt((String)request.getParameter("soluongsp")); //Lấy số lượng sản phẩm cần thêm vào giỏ
 		if(SoLuong == 0) {
 			SoLuong = 1;
 		}
+		//int SoLuong = 1;
 		
 		//Nếu đã có sản phẩm trong giỏ hàng, tức là có giỏ hàng
 		if(ses.getAttribute("Cart") != null) {
@@ -62,9 +67,10 @@ public class ThemGioHang extends HttpServlet {
 			for(GioHangModel sp : Cart) {
 				if(sp.getSanPham().getId() == Id) {
 					timthay = true; //đã tìm thấy sản phẩm trong giỏ
-					int soluongmoi = sp.getSoLuong() + 1;
+					int soluongmoi = sp.getSoLuong() + SoLuong;
 					sp.setSoLuong(soluongmoi);
 					sp.setTongTien();
+					sp.setAnh(Anh);
 				}
 			}
 			
@@ -74,6 +80,7 @@ public class ThemGioHang extends HttpServlet {
 				item.setSanPham(SanPham);
 				item.setSoLuong(SoLuong);
 				item.setTongTien();
+				item.setAnh(Anh);
 				
 				Cart.add(item);
 			}
@@ -85,6 +92,7 @@ public class ThemGioHang extends HttpServlet {
 			item.setSanPham(SanPham);
 			item.setSoLuong(SoLuong);
 			item.setTongTien();
+			item.setAnh(Anh);
 			
 			ArrayList<GioHangModel> Cart = new ArrayList<GioHangModel>();
 			Cart.add(item);
@@ -92,9 +100,23 @@ public class ThemGioHang extends HttpServlet {
 			ses.setAttribute("Cart", Cart);
 		}	
 		
+		//Đưa kết quả lên giỏ hàng trên trang chủ gồm có tổng số sp:
+		PrintWriter out = response.getWriter();
+		Gson gson = new Gson();
+		
+		ArrayList<GioHangModel> Cart = (ArrayList<GioHangModel>) ses.getAttribute("Cart");
+		String giohang = gson.toJson(Cart);
+		
+		//System.out.println(giohang);
+		out.println(giohang);
+		out.flush();
+		out.close();
+
+		
+		
 		//Đưa về giỏ hàng .jsp
-		RequestDispatcher dis = request.getRequestDispatcher("GioHang.jsp");
-		dis.forward(request, response);
+		//RequestDispatcher dis = request.getRequestDispatcher("GioHang.jsp");
+		//dis.forward(request, response);
 	}
 	
 	

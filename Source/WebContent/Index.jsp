@@ -25,6 +25,8 @@
 <!-- Custom stlylesheet -->
 <link type="text/css" rel="stylesheet" href="css/style.css"/>
 
+<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.css"/>
+
 </head>
 <body>
 	<jsp:include page="Header.jsp"></jsp:include>

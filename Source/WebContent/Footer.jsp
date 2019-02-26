@@ -146,6 +146,9 @@
 		<script src="js/nouislider.min.js"></script>
 		<script src="js/jquery.zoom.min.js"></script>
 		<script src="js/main.js"></script>
-	
+		<script src="js/jquery-2.1.1.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.js"></script>"
+		<script src="js/cart-custom.js"></script>
+		<script src="js/nguoidung.js"></script>
 </body>
 </html>

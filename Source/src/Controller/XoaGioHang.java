@@ -57,6 +57,22 @@ public class XoaGioHang extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession ses = request.getSession();
+		
+		int Id =Integer.parseInt((String)request.getParameter("idsp"));
+		
+		if(ses.getAttribute("Cart") != null) {
+			ArrayList<GioHangModel> Cart = (ArrayList<GioHangModel>) ses.getAttribute("Cart");
+			
+			for(int i= 0; i< Cart.size(); i++) {
+				GioHangModel item = Cart.get(i);
+				if(item.getSanPham().getId() == Id) { //Nếu tìm thấy sản phẩm cần xóa trong giỏ
+					Cart.remove(i);
+				}
+			}
+			
+			ses.setAttribute("Cart", Cart);
+		}
 		
 	}
 
