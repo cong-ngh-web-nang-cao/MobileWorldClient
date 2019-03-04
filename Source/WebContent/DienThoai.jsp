@@ -11,7 +11,7 @@
 <head>
 <meta charset="utf-8">
 <title>Điện Thoại - Mobile World</title>
-
+<link rel="icon" href="img/icon-mobile.png" type="image/gif" > 
 <!-- Google font -->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 
@@ -134,7 +134,7 @@
 								if(pageIndex > 1){
 									pagePrev = pageIndex -1; 
 								}else{
-									pagePrev = 5;
+									pagePrev = pageNuber1;
 								}
 							
 							%>
@@ -151,7 +151,7 @@
 									}
 									else{	
 							%>
-									<li><a href="DienThoai.jsp?pageIndex=<%=i%>"><%=i %></a></li>
+									<li> <a href="DienThoai.jsp?pageIndex=<%=i%>"><%=i %></a></li>
 							<%
 									}
 								}

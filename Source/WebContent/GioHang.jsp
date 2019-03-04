@@ -1,3 +1,4 @@
+<%@page import="Models.NguoiDungModel"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="DAO.SanPhamDAO"%>
 <%@page import="Models.GioHangModel"%>
@@ -9,6 +10,7 @@
 <head>
 <meta charset="utf-8">
 <title>Giỏ Hàng</title>
+<link rel="icon" href="img/icon-mobile.png" type="image/gif" > 
 <!-- Google font -->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 
@@ -126,13 +128,28 @@
                 		}
                     %>
                 </tbody>
-                <tfoot>
+                <tfoot >
                     <td><a href="Index.jsp" class="btn btn-success"><i class="fa fa-angle-left"></i> Tiếp tục mua hàng</a>
 				    </td> 
 				    <td colspan="2" class="hidden-xs"> <strong>Tổng Số Lượng: <%=TongSoLuong %></strong> </td> 
 				    <td class="hidden-xs text-center"><strong>Tổng tiền: <%=formatter.format(ThanhTien) %> đ</strong>
-				    </td> 
-				    <td><a href="#" class="btn btn-danger btn-block">Thanh toán <i class="fa fa-angle-right"></i></a>
+				    </td>
+				    
+				    <%
+				    	NguoiDungModel model = (NguoiDungModel)ses.getAttribute("NguoiDung");
+				    	
+				    	if(model !=null ){	
+				    %>  
+				    	<td><a href="DatHangKhachDaDangNhap.jsp" class="btn btn-danger btn-block">Đặt Hàng <i class="fa fa-angle-right"></i></a>
+				    <%
+				    	}
+				    	else
+				    	{
+				    %>
+				    	<td><a href="DatHangKhachChuaDangNhap.jsp" class="btn btn-danger btn-block">Đặt Hàng <i class="fa fa-angle-right"></i></a>
+				    <%
+				    	}
+				    %>	
 				    </td> 
                 </tfoot>
             </table>

@@ -9,6 +9,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Chi Tiết Sản Phẩm</title>
+<link rel="icon" href="img/icon-mobile.png" type="image/gif" > 
 <!-- Google font -->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 
@@ -107,12 +108,6 @@
 
 							<div class="product-options">
 								<label>
-									Kích Cỡ
-									<select class="input-select">
-										<option value="0">X</option>
-									</select>
-								</label>
-								<label>
 									Màu Sắc
 									<select class="input-select">
 										<option value="0">Đen</option>
@@ -183,17 +178,40 @@
 
 								<!-- tab2  -->
 								<div id="tab2" class="tab-pane fade in">
-									<div class="row">
+								
+									<div class="row" style="font-size: large;">
 										<div class="col-md-12">
-											<p>Tên Sản Phẩm: <%=model.getTenSP() %> </p>
-											<p>Giá: <%=formatter.format(model.getGia()) %> VNĐ</p>
-											<p>Camera Trước: <%=model.getCamTruoc() %> </p>
-											<p>Camera Sau: <%=model.getCamSau() %> </p>
-											<p>ROM: <%=model.getROM() %> Gb</p>
-											<p>RAM: <%=model.getRAM() %> Gb</p>
-											<p>Thẻ Nhớ: <%=model.getTheNho() %> Gb</p>
+										 	<div class="col-md-12" style="margin-top: 10px">
+										 		<div class="col-md-2"><strong>Tên Sản Phẩm:</strong></div>
+										 		<div class="col-md-3"><%=model.getTenSP() %></div>
+										 	</div>
+										 	<div class="col-md-12" style="margin-top: 10px">
+										 		<div class="col-md-2"><strong>Giá:</strong></div>
+										 		<div class="col-md-2"><%=formatter.format(model.getGia()) %> VNĐ</div>
+										 	</div>
+										 	<div class="col-md-12" style="margin-top: 10px">
+										 		<div class="col-md-2"><strong>Camera Trước:</strong></div>
+										 		<div class="col-md-2"><%=model.getCamTruoc() %> MP</div>
+										 	</div>
+										 	<div class="col-md-12" style="margin-top: 10px">
+										 		<div class="col-md-2"><strong>Camera Sau:</strong></div>
+										 		<div class="col-md-2"><%=model.getCamSau() %> MP</div>
+										 	</div>
+										 	<div class="col-md-12" style="margin-top: 10px">
+										 		<div class="col-md-2"><strong>ROM:</strong></div>
+										 		<div class="col-md-2"><%=model.getROM() %> GB</div>
+										 	</div>
+										 	<div class="col-md-12" style="margin-top: 10px">
+										 		<div class="col-md-2"><strong>RAM:</strong></div>
+										 		<div class="col-md-2"><%=model.getRAM() %> GB</div>
+										 	</div>
+										 	<div class="col-md-12" style="margin-top: 10px">
+										 		<div class="col-md-2"><strong>Thẻ Nhớ:</strong></div>
+										 		<div class="col-md-2"><%=model.getTheNho() %> GB</div>
+										 	</div>
 										</div>
 									</div>
+									
 								</div>
 								<!-- /tab2  -->
 

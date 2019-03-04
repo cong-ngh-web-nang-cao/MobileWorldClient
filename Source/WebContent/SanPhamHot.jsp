@@ -71,7 +71,7 @@
 												<div class="product-btns">
 													<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Yêu Thích</span></button>
 													<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">So Sánh</span></button>
-													<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Xem Luôn</span></button>
+													<a class="quick-view" href="/MobileWorldClient/ChiTietSanPham?id=<%=model.getId()%>"><i class="fa fa-eye"></i><span class="tooltipp"></span></a>
 												</div>
 											</div>
 											<div class="add-to-cart">

@@ -68,4 +68,67 @@ public class NguoiDungDAO {
 		return model;
 	}
 	
+	
+	public int TaoTaiKhoan(NguoiDungModel model) {
+		String sql = "{call SP_ThemNguoiDung(?,?,?,?,?)}";
+		
+		ResultSet rs = null;
+		
+		int ketqua = 4;
+		
+		try {
+			CallableStatement cs = con.prepareCall(sql);
+			cs.setString(1, model.getDienThoai());
+			cs.setString(2, model.getMatKhau());
+			cs.setString(3, model.getTen());
+			cs.setString(4, model.getEmail());
+			cs.setString(5, model.getDiaChi());
+			
+			rs = cs.executeQuery();
+			
+			while(rs.next()) {
+				ketqua = rs.getInt("KetQua");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return ketqua;
+	}
+	
+	
+	public int CapNhatThongTinNguoiDung(NguoiDungModel model) {
+		String sql = "{call SP_CapNhatThongTinNguoiDung(?,?,?,?,?)}";
+		
+		ResultSet rs = null;
+		
+		int ketqua = 4;
+		
+		try {
+			CallableStatement cs = con.prepareCall(sql);
+			cs.setInt(1, model.getId());
+			cs.setString(2, model.getDienThoai());
+			cs.setString(3, model.getTen());
+			cs.setString(4, model.getEmail());
+			cs.setString(5, model.getDiaChi());
+			
+			rs = cs.executeQuery();
+			
+			while(rs.next()) {
+				ketqua = rs.getInt("KetQua");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return ketqua;
+	}
+	
+	
+	
+	
 }

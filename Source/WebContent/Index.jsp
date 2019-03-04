@@ -6,6 +6,8 @@
 <meta charset="utf-8">
 <title>Trang chủ Mobile World</title>
 
+<link rel="icon" href="img/icon-mobile.png" type="image/gif" > 
+
 <!-- Google font -->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 

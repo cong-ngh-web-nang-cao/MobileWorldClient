@@ -55,6 +55,17 @@ Table OF Contents
 	Typography
 \*----------------------------*/
 
+.nk6-s6ts li:nth-of-type(odd) {
+    background: #f9f9f9;
+}
+.nk6-s6ts li {
+    display: table;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: #3c3c3c;
+}
+
 body {
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
@@ -292,7 +303,7 @@ textarea.input {
 \*----------------------------*/
 
 .section {
-  padding-top: 30px;
+  padding-top: 20px;
   padding-bottom: 30px;
 }
 

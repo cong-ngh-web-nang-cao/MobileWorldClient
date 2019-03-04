@@ -1,7 +1,11 @@
 eclipse.preferences.version=1
+encoding//WebContent/DieuKhoanKhiMuaHang.jsp=UTF-8
+encoding//WebContent/DonHangCuaBan.jsp=UTF-8
 encoding//WebContent/Index.jsp=UTF-8
 encoding//src/Controller/CapNhatSoLuong.java=UTF-8
 encoding//src/Controller/DangNhap.java=UTF-8
+encoding//src/Controller/DatHang.java=UTF-8
 encoding//src/Controller/ThemGioHang.java=UTF-8
 encoding//src/Controller/XoaGioHang.java=UTF-8
+encoding//src/DAO/DonHangDAO.java=UTF-8
 encoding//src/DAO/SanPhamDAO.java=UTF-8

@@ -1,6 +1,10 @@
 
 $(document).ready(function(){
 	loadGioHang();
+	DatHang();
+	LaySoLuongDonHang();
+	DongYDieuKhoan();
+	
 	$('.add-to-cart-btn').click(function(){
 		var id = $(this).attr("data-id");
 		var soluong = $('#txtSoLuong').val();
@@ -44,7 +48,7 @@ $(document).ready(function(){
 				$('#cartInfo').html(html);
 				$('#sosanpham').html(sosanpham);
 				
-				swal("", "Đã Thêm Vào Giỏ Hàng!", "success");
+				sweetAlert("", "Đã Thêm Vào Giỏ Hàng!", "success");
 			}
 		});
 	});	
@@ -86,7 +90,7 @@ function loadGioHang(){
 				}
 				html += '</div>';
 				html += '<div class="cart-summary">';
-				html += '<p> '+sosanpham+ 'sản phẩm</p>';
+				html += '<p> '+sosanpham+ ' sản phẩm</p>';
 				html += '<h5>Tổng Tiền: '+tongtien+' VNĐ</h5>';
 				html += '</div>';
 				html += '<div class="cart-btns">';
@@ -120,11 +124,58 @@ function loadGioHang(){
 	});
 
 
+function DatHang(){
+	$('#btnDatHang').click(function(){
+		var ten = $('#TenKH').val();
+		var dienthoai = $('#DienThoai').val();
+		var email = $('#Email').val();
+		var diachi = $('#DiaChi').val();
+		
+		$.ajax({
+			type: "POST",
+			url: "DatHang",
+			data: {TenKH: ten, DienThoai: dienthoai, Email: email, DiaChi: diachi},
+			success: function(result){
+				if(result == 1){
+					sweetAlert("", "Đặt hàng thành công!", "success");
+					LaySoLuongDonHang();
+					
+				}else{
+					alert("Thất Bại");
+				}
+				
+			}
+		});
+		
+	});
+};
 
 
+function LaySoLuongDonHang(){
+	$.ajax({
+		type: 'GET',
+		url: 'LaySoLuongDonHang',
+		headers:{
+			Accept : "application/json; charset=utf-8",
+			"Content-Type" : "application/json; charset=utf-8"
+		},
+		success: function(result) {
+			$('#SoLuongDonHang').html(result);
+		}
+		
+	})
+}
 
-
-
+function DongYDieuKhoan(){
+	$('#terms').click(function(){
+		if(this.checked){
+			$('#btnDatHang').css('display','block');
+		}
+		else{
+			$('#btnDatHang').css('display','none');
+		}
+	});
+}
 
 
 

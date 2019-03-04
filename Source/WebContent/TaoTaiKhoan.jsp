@@ -5,6 +5,7 @@
 <head>
 <meta charset="utf-8">
 <title>Tạo Tài Khoản</title>
+<link rel="icon" href="img/icon-mobile.png" type="image/gif" > 
 <!-- Google font -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 	
@@ -41,30 +42,28 @@
 							<div class="section-title">
 								<h3 class="title">Tạo Tài Khoản</h3>
 							</div>
-							<div class="form-group">
-								<input class="input" type="number" name="first-name" placeholder="Số điện thoại">
+							<div class="form-group">								
+								<input class="input" type="number" id="sdt" placeholder="Số điện thoại" required="">
 							</div>
 							<div class="form-group">
-								<input class="input" type="password" name="last-name" placeholder="Mật khẩu">
+								<input class="input" type="password" id="matkhau" placeholder="Mật khẩu" required="">
 							</div>
 							<div class="form-group">
-								<input class="input" type="email" name="first-name" placeholder="Email">
+								<input class="input" type="email" id="email" placeholder="Email" required="">
 							</div>
 							<div class="form-group">
-								<input class="input" type="text" name="last-name" placeholder="Họ Tên">
+								<input class="input" type="text" id="ten" placeholder="Họ Tên" required="">
 							</div>
 							<div class="form-group">
-								<input class="input" type="text" name="last-name" placeholder="Địa Chỉ">
-							</div>
-							
-							
-							
+								<input class="input" type="text" id="diachi" placeholder="Địa Chỉ" required="">
+							</div>	
+
 							<div class="col-md-12">
 								<div class="col-md-6">
-									<a href="#" class="primary-btn order-submit">Tạo Tài Khoản</a>
+									<a id="btnTaoTaiKhoan" class="primary-btn order-submit">Tạo Tài Khoản</a>
 								</div>
 								<div class="col-md-6">
-									<a href="#" class="primary-btn order-submit">Hủy Bỏ</a>
+									<a href="Index.jsp" class="primary-btn order-submit">Hủy Bỏ</a>
 								</div>
 								
 							</div>

@@ -40,7 +40,7 @@
 										DecimalFormat formatter = new DecimalFormat("###,###,###");	
 									
 										SanPhamDAO dao = new SanPhamDAO();
-										List<SanPhamViewModel> list = (List<SanPhamViewModel>) dao.SanPhamMoi();
+										List<SanPhamViewModel> list =(List<SanPhamViewModel>) dao.SanPhamMoi();
 									
 										for(int i = 0; i< list.size(); i++){		
 											SanPhamViewModel model = list.get(i);
@@ -48,6 +48,7 @@
 											String anhsp = dao.Lay1AnhSanPham(model.getId());
 											
 									%>
+									
 									
 										<!-- product -->
 										<div class="product">

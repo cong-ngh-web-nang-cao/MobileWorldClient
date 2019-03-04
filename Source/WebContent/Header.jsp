@@ -1,3 +1,4 @@
+<%@page import="Models.NguoiDungModel"%>
 <%@page import="DAO.SanPhamDAO"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="Models.GioHangModel"%>
@@ -39,7 +40,7 @@
 						<div class="col-md-3">
 							<div class="header-logo">
 								<a href="/MobileWorldClient/TrangChu" class="logo">
-									<img src="./img/logo.png" alt="">
+									<img src="./img/logo3.png" alt="">
 								</a>
 							</div>
 						</div>
@@ -48,14 +49,14 @@
 						<!-- SEARCH BAR -->
 						<div class="col-md-6">
 							<div class="header-search">
-								<form>
+								<form action="TimKiemSanPham" method="POST">
 									<select class="input-select">
 										<option value="0">Tất Cả</option>
 										<option value="1">Điện Thoại</option>
 										<option value="1">Máy Tính Bảng</option>
 									</select>
-									<input class="input" placeholder="Sản phẩm cần tìm...">
-									<button class="search-btn">Tìm Kiếm</button>
+									<input name="TuKhoa" class="input" placeholder="Sản phẩm cần tìm...">
+									<button type="submit" class="search-btn">Tìm Kiếm</button>
 								</form>
 							</div>
 						</div>
@@ -64,16 +65,6 @@
 						<!-- ACCOUNT -->
 						<div class="col-md-3 clearfix">
 							<div class="header-ctn">
-								<!-- Wishlist -->
-								<div>
-									<a href="#">
-										<i class="fa fa-heart-o"></i>
-										<span>Yêu Thích</span>
-										<div class="qty">2</div>
-									</a>
-								</div>
-								<!-- /Wishlist -->
-
 								<!-- Cart -->
 								<div class="dropdown">
 									
@@ -88,6 +79,26 @@
 									
 								</div>
 								<!-- /Cart -->
+
+								<%
+									HttpSession ses = request.getSession();
+									NguoiDungModel model = (NguoiDungModel) ses.getAttribute("NguoiDung");
+									
+									if(model != null){
+								%>
+								<!-- Wishlist -->
+								<div>
+									<a href="DonHangCuaBan.jsp">
+										<i class="fa fa-address-card-o"></i>
+										<span>Đơn Hàng</span>
+										<div id="SoLuongDonHang" class="qty"></div>
+									</a>
+								</div>
+								<!-- /Wishlist -->
+								<%
+									}
+								%>
+
 
 								<!-- Menu Toogle -->
 								<div class="menu-toggle">
@@ -115,7 +126,7 @@
 				<div id="responsive-nav">
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
-						<li><a class="btnTrangChu" href="#">Trang Chủ</a></li>
+						<li><a class="btnTrangChu" href="Index.jsp">Trang Chủ</a></li>
 						<li><a href="DienThoai.jsp?pageIndex=1">Điện Thoại</a></li>
 						<li><a href="#">Máy Tính Bảng</a></li>
 						<li><a href="#">Khuyến Mại</a></li>
@@ -126,7 +137,7 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tài Khoản <b class="caret"></b></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="DangNhap.jsp">Đăng Nhập</a></li>
-								<li><a href="#">Tạo Tài Khoản</a></li>
+								<li><a href="TaoTaiKhoan.jsp">Tạo Tài Khoản</a></li>
 							</ul>
 							
 							
