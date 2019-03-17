@@ -48,12 +48,12 @@
 					<div id="store" class="col-md-9">
 						<!-- store top filter -->
 						<div class="store-filter clearfix">
-							<label>Danh Mục Điện Thoại</label>
+							<label id="hienthi">Sản phẩm</label>
 						</div>
 						<!-- /store top filter -->
 
 						<!-- store products -->
-						<div class="row">
+						<div class="row" id = "ketquatimkiem">
 						<%
 							DecimalFormat formatter = new DecimalFormat("###,###,###");	
 							int pageIndex = 0;
@@ -125,7 +125,7 @@
 						<!-- /store products -->
 
 						<!-- store bottom filter -->
-						<div class="store-filter clearfix">
+						<div class="store-filter clearfix" id="phantrang">
 							<span class="store-qty">Sản phẩm: <%=Start %> đến <%=End %></span>
 							<ul class="store-pagination">
 							<%

@@ -11,6 +11,7 @@ public class SanPhamViewModel {
 	private int ROM;
 	private int RAM;
 	private int TheNho;
+	private String Anh;
 	
 	public void setId(int _Id) {
 		this.Id = _Id;
@@ -80,5 +81,11 @@ public class SanPhamViewModel {
 	}
 	public int getTheNho() {
 		return TheNho;
+	}
+	public String getAnh() {
+		return Anh;
+	}
+	public void setAnh(String anh) {
+		Anh = anh;
 	}
 }

@@ -73,4 +73,40 @@ public class TimKiemDAO {
 		
 		return SoLuong;
 	}
+	
+	
+	public List<SanPhamViewModel> KetQuaLoc(String str){
+		SanPhamDAO spdao = new SanPhamDAO();
+		ResultSet rs = null;
+		List<SanPhamViewModel> list = new ArrayList<SanPhamViewModel>();
+		
+		String sql = "{call SP_LocKetQua (?)}";
+		
+		try {
+			CallableStatement cs = con.prepareCall(sql);
+			cs.setString(1, str);
+			
+			rs = cs.executeQuery();
+			
+			while(rs.next()) {
+				SanPhamViewModel model = new SanPhamViewModel();
+				String anhsp = spdao.Lay1AnhSanPham(rs.getInt("Id"));
+				model.setAnh(anhsp);
+				
+				model.setId(rs.getInt("Id"));
+				model.setTenSP(rs.getString("TenSP"));
+				model.setGia(rs.getInt("Gia"));
+				
+				list.add(model);		
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
 }

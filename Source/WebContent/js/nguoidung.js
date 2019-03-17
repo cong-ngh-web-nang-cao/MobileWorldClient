@@ -36,7 +36,6 @@ $(document).ready(function(){
 				}
 				else{
 					sweetAlert("Oops...", "Thông tin không chính xác!", "error");
-					
 				}
 			}
 				

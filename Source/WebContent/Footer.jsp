@@ -150,5 +150,6 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.js"></script>"
 		<script src="js/cart-custom.js"></script>
 		<script src="js/nguoidung.js"></script>
+		<script src="js/search.js"></script>
 </body>
 </html>
